@@ -1,13 +1,21 @@
 {
   "name": "valenbisibot",
   "version": "1.0.0",
-  "description": "Valenbisi bot",
+  "description": "Valenbisi Telegram bot",
   "main": "index.js",
+  "author":{
+    "name" : "Alejandro González",
+    "email" : "alejandro.gon.per@gmail.com",
+    "url" : "http://alejandrogonzalez.me/"
+  },
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Alejandro González",
-  "license": "ISC",
+  "license": "GPL-3.0",
+  "repository" :{ 
+    "type" : "git",
+    "url" : "https://github.com/algope/valenbisibot"
+  },
   "dependencies": {
     "geolib": "^2.0.22",
     "get-json": "0.0.3",
