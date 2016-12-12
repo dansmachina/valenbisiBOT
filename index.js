@@ -1,7 +1,7 @@
 const Telegraf = require('telegraf');
 const Geolib = require('geolib');
 const GetJSON = require('get-json');
-const Emoji = require('node-emoji')
+const Emoji = require('node-emoji');
 
 const Token = '<token_here>'
 const app = new Telegraf(Token);
@@ -71,7 +71,15 @@ app.on('document', (ctx) => {
     ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
     console.log("[INFO] - rendom text - " + usuario)
 });
-    
+
+app.on('message', (ctx) => {
+    ctx.replyWithChatAction('typing');
+    var nombre = ctx.from.first_name;
+    var usuario = ctx.from.username;
+    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
+    console.log("[INFO] - rendom text - " + usuario)
+});
+
 
 app.hears('hola', (ctx) => ctx.reply('¡Hola!'))
 app.hears('Hola', (ctx) => ctx.reply('¡Hola!'))
