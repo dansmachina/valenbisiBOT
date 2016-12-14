@@ -3,7 +3,7 @@ const Geolib = require('geolib');
 const GetJSON = require('get-json');
 const Emoji = require('node-emoji');
 
-const Token = '293660490:AAEcsoR-FDld310ECiuauhPWNV-4xovPQQA'
+const Token = '<token_here>'
 const app = new Telegraf(Token);
 
 app.command('start', (ctx) => {
@@ -14,7 +14,6 @@ app.command('start', (ctx) => {
     ctx.reply(reply)
     console.log("[INFO] - /start command - " + usuario)
 })
-
 app.command('acerca_de', (ctx) => {
     ctx.replyWithChatAction('typing');
     ctx.reply(
@@ -24,47 +23,7 @@ app.command('acerca_de', (ctx) => {
     )
 })
 
-app.on('text', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
-
-app.on('image', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
-
-app.on('sticker', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
-
-app.on('voice', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
-
-app.on('contact', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
-
-app.on('document', (ctx) => {
+app.on('message', (ctx) => {
     ctx.replyWithChatAction('typing');
     var nombre = ctx.from.first_name;
     var usuario = ctx.from.username;
@@ -160,14 +119,6 @@ app.on('location', (ctx) => {
         })
     })
 })
-
-app.on('message', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    var nombre = ctx.from.first_name;
-    var usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
 
 app.catch((err) => {
     console.log('[ERROR] - ', err)
