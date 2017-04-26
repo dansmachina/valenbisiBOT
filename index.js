@@ -3,7 +3,7 @@ const Geolib = require('geolib');
 const GetJSON = require('get-json');
 const Emoji = require('node-emoji');
 
-const Token = '203684685:AAGoZqXbG_WeEwzbLx0f_v64_OLW2eZJN1E';
+const Token = '<token>';
 const app = new Telegraf(Token);
 
 app.command('start', (ctx) => {
