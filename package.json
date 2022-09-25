@@ -3,23 +3,22 @@
   "version": "1.0.0",
   "description": "Valenbisi Telegram bot",
   "main": "index.js",
-  "author":{
-    "name" : "Alejandro González",
-    "email" : "alejandro.gon.per@gmail.com",
-    "url" : "http://alejandrogonzalez.me/"
+  "author": {
+    "name": "dansmachina",
+    "email": "hi@algope.com"
   },
   "scripts": {
     "start": "node index.js"
   },
   "license": "GPL-3.0",
-  "repository" :{ 
-    "type" : "git",
-    "url" : "https://github.com/algope/valenbisibot"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/algope/valenbisibot"
   },
   "dependencies": {
-    "geolib": "^2.0.22",
-    "get-json": "0.0.3",
-    "node-emoji": "^1.4.2",
-    "telegraf": "^3.5.2"
+    "geolib": "^3.3.3",
+    "get-json": "^1.0.1",
+    "node-emoji": "^1.11.0",
+    "telegraf": "^4.9.2"
   }
 }

@@ -1,10 +1,9 @@
-const Telegraf = require('telegraf');
+const { Telegraf } = require('telegraf');
 const Geolib = require('geolib');
 const GetJSON = require('get-json');
 const Emoji = require('node-emoji');
 
-const Token = '<token>';
-const app = new Telegraf(Token);
+const app = new Telegraf(process.env.TELEGRAM_TOKEN);
 
 app.command('start', (ctx) => {
     ctx.replyWithChatAction('typing');
@@ -18,31 +17,30 @@ app.command('acerca_de', (ctx) => {
     ctx.replyWithChatAction('typing');
     ctx.reply(
         'Bot no oficial de valenbisi\n' +
-        'Creado por @algope\n' +
-        'http://alejandrogonzalez.me'
+        'Creado por @dansmachina'
     )
 });
 
-app.on('message', (ctx) => {
-    ctx.replyWithChatAction('typing');
-    let nombre = ctx.from.first_name;
-    let usuario = ctx.from.username;
-    ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
-    console.log("[INFO] - rendom text - " + usuario)
-});
+// app.on('message', (ctx) => {
+//     ctx.replyWithChatAction('typing');
+//     let nombre = ctx.from.first_name;
+//     let usuario = ctx.from.username;
+//     ctx.reply(Emoji.emojify(':wave: ' + nombre + '\nSi quieres conocer tu estación de valenbisi más cercana, envíame tu localización.'));
+//     console.log("[INFO] - rendom text - " + usuario)
+// });
 
 app.hears('hola', (ctx) => ctx.reply('¡Hola!'));
 app.hears('Hola', (ctx) => ctx.reply('¡Hola!'));
 
 app.on('location', (ctx) => {
+    console.log("[INFO] - location received - " + ctx.from.username)
     ctx.replyWithChatAction('typing');
     let location = ctx.message.location;
     console.log("[INFO] - location received - " + JSON.stringify(location));
     let bikes = 'https://api.citybik.es/v2/networks/valenbisi?fields=stations';
     GetJSON(bikes, function(error, response) {
         let geolibresp = Geolib.findNearest(location, response.network.stations, 0);
-        let key = geolibresp.key;
-        let estacion = response.network.stations[key];
+        let estacion = geolibresp;
         let latitud = estacion.latitude;
         let longitud = estacion.longitude;
         let direccion = estacion.extra.address;
